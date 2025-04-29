@@ -56,4 +56,9 @@ class Dummy(Table):
         model = Table
 
     name = fake.name()
+
+pytest_plugins = [
+    "gadsqlalchemy.testing.fixtures",
+]
+
 ```
