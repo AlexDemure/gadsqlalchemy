@@ -19,14 +19,17 @@ pip install gadsqlalchemy
 ### Usage
 
 ```python
-from gadsqlalchemy import Sqlalchemy, Base
-
+from gadsqlalchemy import Sqlalchemy, Base, CRUD
 
 alchemy = Sqlalchemy("postgresql+asyncpg://postgres:postgres@localhost:5432/db")
 
 
 class Table(Base):
     ...
+
+
+class Crud(CRUD):
+    table = Table
 
 
 class Service:
@@ -40,4 +43,17 @@ class Service:
     async def create(cls,):
         async with alchemy.connect(transaction=True) as session:
            ...
+
+# testing
+import faker
+
+from gadsqlalchemy.testing import Table
+
+fake = faker.Faker()
+
+class Dummy(Table):
+    class Meta:
+        model = Table
+
+    name = fake.name()
 ```
