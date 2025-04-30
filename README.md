@@ -19,6 +19,8 @@ pip install gadsqlalchemy
 ### Usage
 
 ```python
+# logger: sqlalchemy.profiler
+
 from gadsqlalchemy import Sqlalchemy, Base, CRUD
 
 alchemy = Sqlalchemy("postgresql+asyncpg://postgres:postgres@localhost:5432/db")
